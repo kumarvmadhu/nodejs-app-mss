@@ -8,20 +8,14 @@ pipeline{
                     url: 'https://github.com/kumarvmadhu/nodejs-app-mss.git'
             }
         }
-        //Dependencies
-        stage('Dependencies'){
+        //Build
+        stage('Build'){
             steps {
              //nodejs(nodeJSInstallationName: 'nodejs18.6.0')
               sh "npm install"
               
         }
-      }
-         stage('Build'){
-            steps {
-             //nodejs(nodeJSInstallationName: 'nodejs18.6.0')
-               sh "npm run build"
-        }
-      }
+ 
 
       //Execute SOnarQUbe Report
       stage('ExecuteSonarQubeReport'){
