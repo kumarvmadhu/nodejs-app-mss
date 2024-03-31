@@ -30,7 +30,8 @@ pipeline{
 
       stage('RunNodeJsApp'){
         steps {
-              sh "npm run app.js &"
+              sh "chmod 777 ./scripts/runApp.sh"
+              sh "./scripts/runApp.sh"
           }
         }
     }
