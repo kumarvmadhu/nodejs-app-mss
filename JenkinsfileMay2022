@@ -10,22 +10,22 @@ pipeline{
         }
         //Build
         stage('Build'){
-        nodejs(nodeJSInstallationName: 'nodejs18.6.0'){
+        //nodejs(nodeJSInstallationName: 'nodejs18.6.0'){
           sh "npm install"
         }
       }
 
       //Execute SOnarQUbe Report
-      stage('ExecuteSonarQubeReport'){
-      nodejs(nodeJSInstallationName: 'nodejs18.6.0'){
-          sh "npm run sonar"
-        }
-      }
+     // stage('ExecuteSonarQubeReport'){
+      //nodejs(nodeJSInstallationName: 'nodejs18.6.0'){
+      //    sh "npm run sonar"
+       // }
+      //}
 
-      stage('UploadArtifcatsintoNexus')
-        {
-            sh "npm publish"
-        }
+      //stage('UploadArtifcatsintoNexus')
+        //{
+         //   sh "npm publish"
+        //}
 
       stage('RunNodeJsApp')
       {
