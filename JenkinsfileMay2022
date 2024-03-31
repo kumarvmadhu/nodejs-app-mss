@@ -13,6 +13,7 @@ pipeline{
             steps {
              //nodejs(nodeJSInstallationName: 'nodejs18.6.0')
               sh "npm install"
+              sh "npm build"
         }
       }
 
@@ -28,6 +29,24 @@ pipeline{
         //{
          //   sh "npm publish"
         //}
+      stage('Publish to Artifactory') {
+            steps {
+                // Publish artifacts to Artifactory
+                rtUpload (
+                    serverId: 'artifactory', // ID of Artifactory server configured in Jenkins
+                    spec: '''{
+                        "files": [
+                            {
+                                "pattern": "dist/*.tar.gz",
+                                "target": "example-repo-local/"
+                            }
+                        ]
+                    }''',
+                    //deployerCredentialsId: ARTIFACTORY_CREDENTIALS_ID
+                )
+            }
+        }
+    }
 
       stage('RunNodeJsApp'){
         steps {
