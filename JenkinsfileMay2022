@@ -17,11 +17,12 @@ pipeline{
       }
 
       //Execute SOnarQUbe Report
-     // stage('ExecuteSonarQubeReport'){
-      //nodejs(nodeJSInstallationName: 'nodejs18.6.0'){
-      //    sh "npm run sonar"
-       // }
-      //}
+      stage('ExecuteSonarQubeReport'){
+        steps{
+      //nodejs(nodeJSInstallationName: 'nodejs18.6.0')
+              sh "npm run sonar"
+            }
+        }
 
       //stage('UploadArtifcatsintoNexus')
         //{
