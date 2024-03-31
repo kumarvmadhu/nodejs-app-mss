@@ -8,12 +8,18 @@ pipeline{
                     url: 'https://github.com/kumarvmadhu/nodejs-app-mss.git'
             }
         }
-        //Build
-        stage('Build'){
+        //Dependencies
+        stage('Dependencies'){
             steps {
              //nodejs(nodeJSInstallationName: 'nodejs18.6.0')
               sh "npm install"
-              sh "npm build"
+              
+        }
+      }
+         stage('Build'){
+            steps {
+             //nodejs(nodeJSInstallationName: 'nodejs18.6.0')
+               sh "npm build"
         }
       }
 
